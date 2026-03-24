@@ -1,0 +1,54 @@
+plugins {
+    id "wtmp.deps-conventions"
+    id "wtmp.java-conventions"
+    id "wtmp.publishing-conventions"
+    id "wtmp.versioning-conventions"
+}
+
+allprojects {
+    group = "edu.pdx.ce.w2"
+}
+
+
+def exeDir = file("dist")
+def executables = [
+        [
+                artifactId: "w2",
+                version   : "4.0-win-x86_64",
+                file      : new File(exeDir, "w2-4.0-win-x86_64.exe")
+        ],
+        [
+                artifactId: "w2-pre",
+                version   : "4.0-win-x86_64",
+                file      : new File(exeDir, "w2-pre-4.0-win-x86_64.exe")
+        ],
+        [
+                artifactId: "w2-post",
+                version   : "3.0-win-x86_64",
+                file      : new File(exeDir, "w2-post-3.0-win-x86_64.exe")
+        ],
+        [
+                artifactId: "w2-pre-console",
+                version   : "4.5-win-x86_64",
+                file      : new File(exeDir, "w2-pre-console-4.5-win-x86_64.exe")
+        ]
+]
+
+
+publishing {
+    publications {
+        executables.each { exe ->
+            create("${exe.artifactId}-${exe.version}", MavenPublication) {
+                groupId    = project.group
+                artifactId = exe.artifactId
+                version    = exe.version
+
+                artifact(exe.file) {
+                    extension "exe"
+
+                }
+            }
+        }
+    }
+}
+
