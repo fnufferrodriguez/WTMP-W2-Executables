@@ -36,15 +36,20 @@ def executables = [
 
 publishing {
     publications {
+        // One MavenPublication per executable
         executables.each { exe ->
             create("${exe.artifactId}-${exe.version}", MavenPublication) {
                 groupId    = project.group
                 artifactId = exe.artifactId
                 version    = exe.version
 
-                artifact(exe.file) {
-                    extension "exe"
+                // Primary Maven artifacts: stub JAR + POM (required by Maven repos)
+                from components.java
 
+                // Attach the EXE as an additional classifier artifact
+                artifact(exe.file) {
+                    classifier = "exe"  // consumers will reference :exe@exe
+                    extension  = "exe"
                 }
             }
         }
