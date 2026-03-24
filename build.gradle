@@ -37,6 +37,10 @@ def executables = [
 
 publishing {
     publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+
         // One MavenPublication per executable
         executables.each { exe ->
             create("${exe.artifactId}-${exe.version}", MavenPublication) {
