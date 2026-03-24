@@ -37,9 +37,14 @@ def executables = [
 
 publishing {
     publications {
+
         mavenJava(MavenPublication) {
             from components.java
+            groupId = "edu.pdx.ce.w2"
+            artifactId = "wtmp-w2-executables"
+            version = "0.0"
         }
+
 
         // One MavenPublication per executable
         executables.each { exe ->
