@@ -51,6 +51,11 @@ def executables = [
                 artifactId: "w2",
                 version   : "TCD-081721",
                 file      : new File(exeDir, "w2-TCD-081721.exe")
+        ],
+        [
+                artifactId: "w2-pre",
+                version   : "4.5-win-x86_64",
+                file      : new File(exeDir, "w2-pre-4.5-win-x86_64.exe")
         ]
 ]
 
