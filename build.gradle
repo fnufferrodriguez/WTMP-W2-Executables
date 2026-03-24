@@ -1,6 +1,5 @@
 plugins {
     id "wtmp.deps-conventions"
-    id "wtmp.java-conventions"
     id "wtmp.publishing-conventions"
     id "wtmp.versioning-conventions"
 }
