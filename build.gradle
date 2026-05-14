@@ -91,9 +91,7 @@ publishing {
                 // Primary Maven artifacts: stub JAR + POM (required by Maven repos)
                 from components.java
 
-                // Attach the EXE as an additional classifier artifact
                 artifact(exe.file) {
-                    classifier = "exe"  // consumers will reference :exe@exe
                     extension  = "exe"
                 }
             }
